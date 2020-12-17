@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="jumbotron">
+  <div *ngIf="currentFile" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+      attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: progress + '%' }">
+      {{ progress }}%
+    </div>
+  </div>
+
+  <div class="alert" *ngIf="message" role="alert">{{ message }}</div>
+  
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)" />
+  </label>
+
+  <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+    Upload
+  </button>
+
+     <table id="inspectionTable" class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Size</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr *ngFor="let file of fileInfos | async">
+        <td><a href="{{ file.url }}" class="badge badge-primary">{{ file.name }}</a></td>
+        <td>{{ file.type }}</td>
+        <td>{{ file.size }}</td>
+        <td><button id="btn_delete_{{ file.id }}" type="button" class="btn btn-danger btn_delete"
+            (click)="delete( file.id )">X</button></td>
+        <td><button id="btn_convert_{{ file.id }}" type="button" class="btn btn-primary btn_convert"
+            (click)="convert( file.id )">Nacitaj data</button></td>
+      </tr>
+
+      <tbody>
+      </tbody>
+    </table>
+
+  </div>
+</div>
