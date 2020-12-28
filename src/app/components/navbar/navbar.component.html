@@ -1,13 +1,9 @@
-
-<div class="container">
-    <nav class="navbar navbar-dark fixed-top bg-primary">
-        <span class="navbar-text ">
-            x
-        </span>
-    </nav>
-    <nav class="navbar hamburger fixed-top navbar-dark bg-primary" [ngStyle]="{'width': '250px'}" >
-
-        <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+<div class="fixed-top">
+    <div class="pt-5 bg-primary"></div>
+    <div class="pt-2 bg-primary"></div>
+  </div>
+    <nav class="navbar fixed-top navbar-dark bg-primary" [ngStyle]="{'width': '250px'}" >
+              <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -16,11 +12,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
-
+        
                 <li class="nav-item">
-                    <a class="nav-link" href="/fileupload">File upload</a>
+                    <a class="nav-link" href="/inspection-list">Obhliadky</a>
                 </li>
             </ul>
         </div>
     </nav>
-</div>
+

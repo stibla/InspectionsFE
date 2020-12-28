@@ -1,0 +1,27 @@
+<div class="jumbotron">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Inspection List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th> 
+            <th>Číslo obhliadky</th>  
+            <!--<th>Actions</th>  -->       
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let inspection of inspections | async" (click)="inspectionDetails(inspection.n_inspection_id)">
+            <td>{{inspection.n_inspection_id}}</td>
+            <td>{{inspection.s_inspection_number}}</td>            
+            <!--<td><button (click)="deleteEmployee(inspection.n_inspection_id)" class="btn btn-danger">Delete</button>
+                <button (click)="employeeDetails(inspection.n_inspection_id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>-->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
