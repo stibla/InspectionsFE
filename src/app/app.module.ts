@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InspectionListComponent } from './components/inspection-list/inspection-list.component';
 import { InspectionDetailComponent } from './components/inspection-detail/inspection-detail.component';
+import { RegexcalculationComponent } from './components/regexcalculation/regexcalculation.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { InspectionDetailComponent } from './components/inspection-detail/inspec
     NavbarComponent,
     DashboardComponent,
     InspectionListComponent,
-    InspectionDetailComponent
+    InspectionDetailComponent,
+    RegexcalculationComponent
   ],
   imports: [
     BrowserModule,

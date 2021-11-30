@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InspectionListComponent } from './components/inspection-list/inspection-list.component'
 import { InspectionDetailComponent } from './components/inspection-detail/inspection-detail.component';
+import { RegexcalculationComponent } from './components/regexcalculation/regexcalculation.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent } ,
@@ -11,6 +12,7 @@ const routes: Routes = [
  // { path: 'fileupload', component: UploadFilesComponent } ,
   { path: 'inspection-list', component: InspectionListComponent } ,
   { path: 'inspection-detail/:id', component: InspectionDetailComponent },
+  { path: 'regexcalculation', component: RegexcalculationComponent },
 ];
 
 @NgModule({

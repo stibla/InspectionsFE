@@ -13,12 +13,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let inspection of inspections | async" (click)="inspectionDetails(inspection.n_inspection_id)">
-            <td>{{inspection.n_inspection_id}}</td>
-            <td>{{inspection.s_inspection_number}}</td>            
-            <!--<td><button (click)="deleteEmployee(inspection.n_inspection_id)" class="btn btn-danger">Delete</button>
-                <button (click)="employeeDetails(inspection.n_inspection_id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-            </td>-->
+          <tr *ngFor="let inspection of inspections | async" (click)="inspectionDetails(inspection.nInspectionId)">
+            <td>{{inspection.nInspectionId}}</td>
+            <td>{{inspection.sInspectionNumber}}</td>            
           </tr>
         </tbody>
       </table>

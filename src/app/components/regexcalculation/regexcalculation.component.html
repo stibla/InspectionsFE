@@ -1,0 +1,53 @@
+<div class="jumbotron">
+    <div *ngIf="message" class="alert alert-warning alert-dismissible fade show">
+        <strong>{{ message }}</strong>
+        <button type="button" class="close" (click)="closeMessage()">&times;</button>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2>RegEx Calculation List</h2>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <!--<th style="width: 10.00%">ID</th>-->
+                        <th style="width: 20.00%">COLUMN</th>
+                        <th style="width: 10.00%">PRIORITY</th>
+                        <th style="width: 40.00%">REGEX</th>
+                        <th style="width: 15.00%">TYPE</th>
+                        <th style="width: 5.00%">MANDATORY</th>
+                        <th style="width: 15.00%">ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let regExCalculation of regExCalculations" >  <!-- | async-->
+                        <!--<td><input type="number" class="form-control"                            
+                                [(ngModel)]="regExCalculation.nRegexcalculationId" readonly> 
+                        </td>-->
+                        <td><input type="text" class="form-control"
+                                [(ngModel)]="regExCalculation.column">
+                        </td>
+                        <td><input type="number" class="form-control"
+                                [(ngModel)]="regExCalculation.priority">
+                        </td>
+                        <td><input type="text" class="form-control"
+                                [(ngModel)]="regExCalculation.regex">
+                        </td>
+                        <td><input type="text" class="form-control"
+                                [(ngModel)]="regExCalculation.type">
+                        </td>
+                        <td><input type="checkbox" class="form-control"
+                                [(ngModel)]="regExCalculation.mandatory">
+                        </td>
+
+                        <td><button (click)="regExCalculationSave(regExCalculation)" class="btn btn-danger">Save</button> 
+                            <button type="button" class="close" (click)="deleteRegEx(regExCalculation.regExCalculationId)">&times;</button>    
+                </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button (click)="regExCalculationNew()" class="btn btn-danger">New</button>
+        </div>
+    </div>
+</div>

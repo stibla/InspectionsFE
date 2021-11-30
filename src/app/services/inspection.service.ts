@@ -28,7 +28,7 @@ export class InspectionService {
     const formData: FormData = new FormData();
 
     formData.append('file', file);
-    formData.append('n_inspection_id', idInspection.toString());
+    formData.append('inspectionId', idInspection.toString());
     /*return this.http.post(`http://localhost:8080/upload`, formData, 
     {reportProgress: true,
       responseType: 'json'});*/
@@ -50,5 +50,10 @@ export class InspectionService {
     //const req = new HttpRequest('DELETE', `${this.baseUrl}/files/${id}`);
 
     //return this.http.request(req);
+  }
+
+  parseCalculation(idInspection: Number , idFile: String): Observable<any> {
+    return this.http.put(`http://localhost:8080//inspections/${idInspection}/getpdftext/${idFile}`
+    , null) ;
   }
 }

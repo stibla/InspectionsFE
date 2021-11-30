@@ -14,37 +14,141 @@
 
     <form>
         <div class="form-group row">
-            <h3>Obhliadka</h3>
-            <!--<div class="col-sm-1">
+            <h3 class="col-sm-11">Obhliadka</h3>
+            <div class="col-sm-1">
                 <button type="submit" class="btn btn-success" (click)="onSubmit()">Uložiť</button>
-            </div>-->
-        </div>
-        <div class="form-group row">
-            <label for="n_inspection_id" class="col-sm-2 col-form-label">ID</label>
-            <input type="text" class="form-control col-sm-3" id="n_inspection_id" required
-                [(ngModel)]="inspection.n_inspection_id" name="n_inspection_id" readonly>
+            </div>
 
-            <label for="s_inspection_number" class="col-sm-2 col-form-label">Číslo obhliadky</label>
-            <input type="text" class="form-control col-sm-3" id="s_inspection_number" required
-                [(ngModel)]="inspection.s_inspection_number" name="s_inspection_number">
         </div>
-        <div class="form-group row">
-            <label for="fileCalculation" class="col-sm-2 col-form-label">Kalkulacia</label>
+        <!---->
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <label for="inspectionId">ID</label>
+                <input type="text" class="form-control" id="inspectionId" placeholder="Example input" required
+                    [(ngModel)]="inspection.nInspectionId" name="inspectionId" readonly>
+            </div>
+            <div class="form-group col-sm-5">
+                <label for="InspectionNumber">Číslo obhliadky</label>
+                <input type="text" class="form-control" id="InspectionNumber" placeholder="Another input" required
+                    [(ngModel)]="inspection.sInspectionNumber" name="inspectionNumber">
+            </div>
+        </div>
 
-            <div class="col-sm-3  col-form-label">
+
+        <div class="form-group row">
+            <div class="form-group col-sm-5">
+                <label for="customFile">Kalkulacia</label>
+
                 <div *ngFor="let file of fileInfos | async">
-                    <a href="{{ file.url }}" class="badge badge-primary">{{ file.name }}</a>
+                    <a href="{{ file.url }}" class="">{{ file.name }}</a>
                     <button type="button" class="close" (click)="deleteFile(file.id)">&times;</button>
                 </div>
-            </div>
-
-            <div *ngIf="(fileInfos | async)?.length == 0" class="custom-file col-sm-2">
-                <input type="file" class="custom-file-input" (change)="selectFile($event)" id="customFile">
-                <label class="custom-file-label" for="customFile">Choose file</label>
+                <div *ngIf="(fileInfos | async)?.length == 0">
+                    <input type="file" class="form-control-file" (change)="selectFile($event)" id="customFile">
+                </div>
+                <!--<div *ngIf="(fileInfos | async)?.length == 0">
+                            <input type="file" class="custom-file-input" (change)="selectFile($event)" id="customFile">
+                            <label class="custom-file-label" for="customFile">Kalkulacia</label>
+                        </div>-->
             </div>
         </div>
-
 
 
     </form>
+
+
+    <div *ngIf="(fileInfos | async)?.length == 1">
+        <div *ngFor="let file of fileInfos | async">
+            <button class="btn btn-info p-1" (click)="parseCalculation(inspection.nInspectionId, file.id)">Načítať
+                kalkuláciu</button>
+        </div>
+    </div>
+
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Kalkulacia</th>
+                <th>Dojednane podmienky</th>
+                <th>Kontrola</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!-- *ngFor="let regExCalculation of regExCalculations" | async-->
+                <td>manufacturerName</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.sManufacturerName" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>manufacturerCode</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.sManufacturerCode" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>modelCode</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.sModelCode" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>submodelCode</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.sSubModelCode" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>axPaintCoef</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.nAxPaintCoef" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>discount</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.nDiscount" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>ratePaint1</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.nRatePaint1" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>rate1</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.nRate1" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>rate2</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.nRate2" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>rate3</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.nRate3" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>discountNH</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.nDiscountNH" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+            </tr>
+            <tr>
+                <td>discountSpares</td>
+                <td><input type="text" class="form-control" [(ngModel)]="inspection.nDiscountSpares" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+                <td><input type="text" class="form-control" readonly></td>
+
+            </tr>
+        </tbody>
+    </table>
+
 </div>

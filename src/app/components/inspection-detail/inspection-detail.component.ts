@@ -54,7 +54,7 @@ export class InspectionDetailComponent implements OnInit {
     this.currentFile = this.selectedFiles.item(0);
     this.inspectionService.upload(this.currentFile, this.id).subscribe(
       event => {
-          if (event.type === HttpEventType.UploadProgress) {
+        if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
@@ -69,12 +69,11 @@ export class InspectionDetailComponent implements OnInit {
         this.message = 'Could not upload the file!';
         this.currentFile = undefined;
       });
-      setTimeout(() => {
-        this.message = '';
-      }, 4000);
+    setTimeout(() => {
+      this.message = '';
+    }, 4000);
     this.selectedFiles = undefined;
   }
-
 
   deleteFile(idFile: String) {
     //alert('delete component' + id);
@@ -86,7 +85,6 @@ export class InspectionDetailComponent implements OnInit {
         this.message = 'Could not delete the file!';
       }
     );
-
   }
 
   initInspectionForm() {
@@ -94,10 +92,28 @@ export class InspectionDetailComponent implements OnInit {
       this.inspection = data;
     }, error => console.log(error));
   }
-  
+
   initFileInspectionForm() {
     this.fileInfos = this.inspectionService.getFiles(this.id);
-}
+  }
 
+  parseCalculation(idInspection: Number , idFile: String) {
+    this.message = 'Spracovavam...';
+    this.inspectionService.parseCalculation(idInspection, idFile).subscribe(
+      x => {
+        this.message = 'Spracovavam.....';
+      },
+      error => {
+        console.log(error);
+        this.message = 'Could not parse the file!';
+      },
+      () => {
+        this.message = 'Spracovane';
+        this.initInspectionForm();
+      });
+    setTimeout(() => {
+      this.message = '';
+    }, 4000);
 
+  }
 }
