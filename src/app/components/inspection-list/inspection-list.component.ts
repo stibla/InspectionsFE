@@ -25,7 +25,10 @@ export class InspectionListComponent implements OnInit {
 
   inspectionDetails(id: number){
     this.router.navigate(['inspection-detail', id]);
-    //console.log(this.inspectionService.getInspection(id));
+  }
+
+  inspectionNew() {
+    this.router.navigate(['inspection-detail', 0]);
   }
 
 }

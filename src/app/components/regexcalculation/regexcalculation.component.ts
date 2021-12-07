@@ -62,7 +62,7 @@ export class RegexcalculationComponent implements OnInit {
       type: null,
       mandatory: false
     });
-    console.log(this.regExCalculations);
+    //console.log(this.regExCalculations);
   }
 
   closeMessage() {

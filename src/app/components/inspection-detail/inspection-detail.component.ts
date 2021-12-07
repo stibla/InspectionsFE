@@ -24,14 +24,26 @@ export class InspectionDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.inspection = new Inspection();
-    this.id = this.route.snapshot.params['id'];
-    this.initInspectionForm();
-    this.initFileInspectionForm();
+    if (this.route.snapshot.params['id'] == 0) {
+      //this.id = this.route.snapshot.params['id'];
+      //this.initFileInspectionForm();
+    } else {
+      this.id = this.route.snapshot.params['id'];
+      this.initInspectionForm();
+      this.initFileInspectionForm();
+    }
   }
 
   onSubmit() {
     this.message = 'Ukladam ...';
-    this.inspectionService.updateInspection(this.inspection).subscribe(data => {
+    this.inspectionService.updateInspection(this.inspection).subscribe(data => {  
+      this.id = data['nInspectionId'];    
+
+      //this.router.navigate(['inspection-detail', id]);
+
+      this.initInspectionForm();
+      this.initFileInspectionForm();
+      console.log(data['nInspectionId']);
       this.message = 'Ulozene';
       setTimeout(() => {
         this.message = '';

@@ -14,7 +14,7 @@ export class RegexcalculationService {
   getRegExCalculationList(): Observable<any> 
   {
     return this.http.get(`${this.baseUrl}`);
-    }
+  }
 
   updateRegExCalculation(regExCalculation: any): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, regExCalculation);
