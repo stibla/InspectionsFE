@@ -4,8 +4,8 @@ Trial Frontend Aplication for Registry damage vehicle inspection to learning Ang
  - edit, insert regular expresions to parse PDF calculation
 
 # Using
-- start InspectionBE
+- start InspectionBE - https://github.com/stibla/InspectionsBE
 - ng serve --open
 
-![](https://github.com/stibla/InspectionFE/blob/master/Screenshot.png)
-![](https://github.com/stibla/InspectionFE/blob/master/Screenshot2.png)
+![](https://github.com/stibla/InspectionsFE/blob/master/Screenshot.png)   
+![](https://github.com/stibla/InspectionsFE/blob/master/Screenshot2.png)
